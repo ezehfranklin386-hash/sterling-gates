@@ -105,17 +105,20 @@ export interface Advisor {
 }
 
 export interface PublicSettings {
-  contactPhone: string;
-  contactPhoneLabel: string;
-  whatsappLink?: string;
-}
-
-export interface AdminSettings extends PublicSettings {
+  contactPhone?: string;
+  contactPhoneLabel?: string;
   adminEmail?: string;
   emailsEnabled?: boolean;
   whatsappEnabled?: boolean;
 }
 
+export interface AdminSettings {
+  contactPhone?: string;
+  contactPhoneLabel?: string;
+  adminEmail?: string;
+  emailsEnabled?: boolean;
+  whatsappEnabled?: boolean;
+}
 export interface AuthSession {
   accessToken: string;
   user: { uid: string; email: string; role: 'admin' };
