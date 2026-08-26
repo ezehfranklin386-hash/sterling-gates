@@ -110,6 +110,7 @@ export interface PublicSettings {
   adminEmail?: string;
   emailsEnabled?: boolean;
   whatsappEnabled?: boolean;
+  whatsappLink?: string;
 }
 
 export interface AdminSettings {
@@ -136,3 +137,4 @@ export interface Paginated<T> {
   items: T[];
   total: number;
 }
+

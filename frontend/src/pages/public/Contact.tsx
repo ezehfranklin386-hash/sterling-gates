@@ -155,11 +155,11 @@ export function Contact() {
             <div>
               <p className="eyebrow">Email</p>
               <a
-                href={`mailto:${CONTACT_EMAIL}`}
+                href={`mailto:${settings?.adminEmail ?? CONTACT_EMAIL}`}
                 className="mt-2 inline-flex items-center gap-2 text-sm text-brass hover:text-parchment"
               >
                 <FiMail className="h-4 w-4 text-gold" />
-                {CONTACT_EMAIL}
+                {settings?.adminEmail ?? CONTACT_EMAIL}
               </a>
             </div>
             <div>

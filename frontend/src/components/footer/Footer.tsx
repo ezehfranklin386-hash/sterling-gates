@@ -67,11 +67,11 @@ function FooterInner() {
           </ul>
           <div className="mt-4 space-y-2.5 text-sm">
             <a
-              href={`mailto:${CONTACT_EMAIL}`}
+              href={`mailto:${settings?.adminEmail ?? CONTACT_EMAIL}`}
               className="inline-flex items-center gap-2.5 text-parchment/70 transition-colors hover:text-brass"
             >
               <FiMail className="h-4 w-4 text-gold" />
-              {CONTACT_EMAIL}
+              {settings?.adminEmail ?? CONTACT_EMAIL}
             </a>
             {settings?.contactPhoneLabel ? (
               <p className="inline-flex items-center gap-2.5 text-parchment/70">
