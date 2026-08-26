@@ -3,7 +3,7 @@ import { api } from '../lib/api';
 import type { AdminSettings, PublicSettings } from '../lib/types';
 
 export function useSettings() {
-  return useQuery({
+  return useQuery<PublicSettings>({
     queryKey: ['settings'],
     queryFn: () => api.getSettings(),
   });
