@@ -109,12 +109,11 @@ export interface PublicSettings {
   contactPhone: string;
   contactPhoneLabel: string;
   whatsappLink?: string;
-}
-
-export interface AdminSettings extends PublicSettings {
   emailsEnabled?: boolean;
   whatsappEnabled?: boolean;
 }
+
+export interface AdminSettings extends PublicSettings {}
 
 export interface AuthSession {
   accessToken: string;

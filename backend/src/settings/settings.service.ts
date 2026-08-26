@@ -9,18 +9,17 @@ export interface PublicSettings {
   contactPhoneLabel: string;
   whatsappLink?: string;
   adminEmail?: string;
-}
-
-export interface AdminSettings extends PublicSettings {
   emailsEnabled?: boolean;
   whatsappEnabled?: boolean;
 }
+
+export interface AdminSettings extends PublicSettings {}
 
 @Injectable()
 export class SettingsService {
   constructor(private readonly supabase: SupabaseService) {}
 
-  /** Keep only digits â€” WhatsApp numbers must be intl/national without + or spaces. */
+  /** Keep only digits — WhatsApp numbers must be intl/national without + or spaces. */
   private normalizePhone(raw?: string): string {
     return (raw ?? '').replace(/[^\d]/g, '');
   }
@@ -36,19 +35,21 @@ export class SettingsService {
     return data ? (this.supabase.snakeToCamel<Record<string, unknown>>(data as Record<string, unknown>) as Record<string, unknown>) : undefined;
   }
 
-  /** GET /settings (public) â€” normalised phone + wa.me link + admin email. */
+  /** GET /settings (public) — normalised phone + wa.me link + admin email. */
   async publicSettings(): Promise<PublicSettings> {
     const s = await this.getRaw();
     const contactPhone = this.normalizePhone(s?.contactPhone as string | undefined);
     return {
       contactPhone,
       contactPhoneLabel: (s?.contactPhoneLabel as string) ?? '',
-      whatsappLink: contactPhone ? `https://wa.me/${contactPhone}` : undefined,
+      whatsappLink: contactPhone ? https://wa.me/ : undefined,
       adminEmail: (s?.adminEmail as string) ?? undefined,
+      emailsEnabled: s?.emailsEnabled as boolean,
+      whatsappEnabled: s?.whatsappEnabled as boolean,
     };
   }
 
-  /** PUT /settings (admin) â€” persist and return the full admin shape. */
+  /** PUT /settings (admin) — persist and return the full admin shape. */
   async update(dto: UpdateSettingsDto): Promise<AdminSettings> {
     this.supabase.require();
     const { error } = await this.supabase
@@ -61,7 +62,7 @@ export class SettingsService {
     return {
       contactPhone,
       contactPhoneLabel: (s?.contactPhoneLabel as string) ?? '',
-      whatsappLink: contactPhone ? `https://wa.me/${contactPhone}` : undefined,
+      whatsappLink: contactPhone ? https://wa.me/ : undefined,
       adminEmail: s?.adminEmail as string,
       emailsEnabled: s?.emailsEnabled as boolean,
       whatsappEnabled: s?.whatsappEnabled as boolean,
