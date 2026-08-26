@@ -6,13 +6,15 @@ import { useSettings, useUpdateSettings } from '../../hooks/useSettings';
 import { getAccessToken } from '../../lib/session';
 import { Button, FieldLabel, Input, Toggle } from '../../components/ui/primitives';
 import { useToast } from '../../components/ui/Toast';
+import type { PublicSettings } from '../../lib/types';
 
 function sanitizePhone(phone: string): string {
   return phone.replace(/[^0-9]/g, '');
 }
 
 export function SettingsAdmin() {
-  const { data } = useSettings();
+  const { data: rawData } = useSettings();
+  const data = rawData as PublicSettings | undefined;
   const update = useUpdateSettings();
   const token = getAccessToken()!;
   const { toast } = useToast();
