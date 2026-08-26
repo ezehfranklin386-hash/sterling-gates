@@ -24,7 +24,7 @@ export function SettingsAdmin() {
   const [whatsappEnabled, setWhatsappEnabled] = useState(true);
   const [ready, setReady] = useState(false);
 
-useEffect(() => {
+  useEffect(() => {
     if (ready || !data) return;
     setContactPhone(data.contactPhone ?? '');
     setContactPhoneLabel(data.contactPhoneLabel ?? '');
