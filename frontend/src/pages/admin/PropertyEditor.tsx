@@ -103,8 +103,8 @@ export function PropertyEditor() {
   }
 
   return (
-    <div className="max-w-4xl">
-      <div className="flex items-center justify-between">
+    <div className="max-w-full sm:max-w-4xl">
+      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <div>
           <Link to="/admin/properties" className="text-xs uppercase tracking-[0.15em] text-brass hover:text-parchment">
             ← Properties
@@ -156,7 +156,7 @@ export function PropertyEditor() {
           <FieldLabel>Price (USD)</FieldLabel>
           <Input type="number" value={form.price ?? 0} onChange={(e) => set('price', Number(e.target.value))} />
         </div>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-3">
           <div>
             <FieldLabel>Size value</FieldLabel>
             <Input type="number" value={form.size?.value ?? 0} onChange={(e) => set('size', { ...(form.size ?? { value: 0, unit: 'sqm' }), value: Number(e.target.value) })} />
@@ -177,7 +177,7 @@ export function PropertyEditor() {
             ))}
           </Select>
         </div>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-3">
           <div>
             <FieldLabel>Bedrooms</FieldLabel>
             <Input type="number" value={form.bedrooms ?? ''} onChange={(e) => set('bedrooms', e.target.value ? Number(e.target.value) : undefined)} />

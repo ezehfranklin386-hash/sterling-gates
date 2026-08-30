@@ -86,8 +86,8 @@ export function BlogEditor() {
   }
 
   return (
-    <div className="max-w-3xl">
-      <div className="flex items-center justify-between">
+    <div className="max-w-full sm:max-w-3xl">
+      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <div>
           <Link to="/admin/blogs" className="text-xs uppercase tracking-[0.15em] text-brass hover:text-parchment">
             ← Blogs

@@ -59,13 +59,13 @@ export function SettingsAdmin() {
   }
 
   return (
-    <div className="max-w-2xl">
+    <div className="max-w-full sm:max-w-2xl">
       <h1 className="display text-3xl text-parchment">Settings</h1>
       <p className="mt-1 text-sm text-parchment/60">
         The contact number here is what clients see and how the enquiry's WhatsApp link is built.
       </p>
 
-      <form onSubmit={onSave} className="mt-8 space-y-6 border border-parchment/10 bg-emerald-light p-7">
+      <form onSubmit={onSave} className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 border border-parchment/10 bg-emerald-light p-7">
         <div>
           <FieldLabel>Contact number (display form)</FieldLabel>
           <Input value={contactPhoneLabel} onChange={(e) => setContactPhoneLabel(e.target.value)} placeholder="+234 801 234 5678" />

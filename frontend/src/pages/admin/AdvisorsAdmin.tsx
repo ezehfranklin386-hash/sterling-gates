@@ -25,7 +25,7 @@ export function AdvisorsAdmin() {
 
   return (
     <div>
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <div>
           <h1 className="display text-3xl text-parchment">Advisors</h1>
           <p className="mt-1 text-sm text-parchment/60">Team profiles shown on the public site.</p>
@@ -59,7 +59,7 @@ export function AdvisorsAdmin() {
                   <Td>{a.sortOrder}</Td>
                   <Td>{a.published ? 'Yes' : 'Draft'}</Td>
                   <Td>
-                    <div className="flex gap-4">
+                    <div className="flex flex-col gap-2 sm:flex-row sm:gap-4">
                       <button onClick={() => { setEditingId(a.id); setEditor(true); }} className="text-xs uppercase tracking-[0.15em] text-brass hover:text-parchment">
                         Edit
                       </button>
@@ -142,9 +142,9 @@ function AdvisorEditor({
   }
 
   return (
-    <div className="mt-8 max-w-2xl border border-parchment/10 bg-emerald-light p-7">
+    <div className="mt-8 max-w-full sm:max-w-2xl border border-parchment/10 bg-emerald-light p-7">
       <form onSubmit={onSubmit} className="space-y-5">
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4">
           <div>
             <FieldLabel>Name</FieldLabel>
             <Input required value={form.name} onChange={(e) => set('name', e.target.value)} />
@@ -154,7 +154,7 @@ function AdvisorEditor({
             <Input value={form.role} onChange={(e) => set('role', e.target.value)} />
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4">
           <div>
             <FieldLabel>Sort order</FieldLabel>
             <Input type="number" value={form.sortOrder} onChange={(e) => set('sortOrder', Number(e.target.value))} />
@@ -173,7 +173,7 @@ function AdvisorEditor({
           <ImageUploader label="Photo" currentUrl={form.photoUrl} onUploaded={(url) => set('photoUrl', url)} />
         </div>
         <Toggle checked={!!form.published} onChange={(v) => set('published', v)} label="Published" />
-        <div className="flex gap-3">
+        <div className="flex flex-col gap-2 sm:flex-row sm:gap-3">
           <Button type="submit" disabled={create.isPending || update.isPending}>Save</Button>
           <Button variant="ghost" type="button" onClick={onDone}>Cancel</Button>
         </div>

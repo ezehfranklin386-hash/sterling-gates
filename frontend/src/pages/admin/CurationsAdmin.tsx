@@ -35,7 +35,7 @@ export function CurationsAdmin() {
 
   return (
     <div>
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <div>
           <h1 className="display text-3xl text-parchment">Curations</h1>
           <p className="mt-1 text-sm text-parchment/60">Curated property collections.</p>
@@ -66,7 +66,7 @@ export function CurationsAdmin() {
                   <Td className="text-xs text-parchment/60">{describeFilter(c.filter)}</Td>
                   <Td>{c.published ? 'Yes' : 'Draft'}</Td>
                   <Td>
-                    <div className="flex gap-4">
+                    <div className="flex flex-col gap-2 sm:flex-row sm:gap-4">
                       <button onClick={() => startEdit(c.id)} className="text-xs uppercase tracking-[0.15em] text-brass hover:text-parchment">
                         Edit
                       </button>
@@ -152,7 +152,7 @@ function CurationEditor({
   }
 
   return (
-    <div className="mt-8 max-w-2xl border border-parchment/10 bg-emerald-light p-7">
+    <div className="mt-8 max-w-full sm:max-w-2xl border border-parchment/10 bg-emerald-light p-7">
       <form onSubmit={onSubmit} className="space-y-5">
         <div>
           <FieldLabel>Title</FieldLabel>
@@ -202,7 +202,7 @@ function CurationEditor({
         </div>
 
         <Toggle checked={!!form.published} onChange={(v) => set('published', v)} label="Published" />
-        <div className="flex gap-3">
+        <div className="flex flex-col gap-2 sm:flex-row sm:gap-3">
           <Button type="submit" disabled={create.isPending || update.isPending}>Save</Button>
           <Button variant="ghost" type="button" onClick={onDone}>Cancel</Button>
         </div>

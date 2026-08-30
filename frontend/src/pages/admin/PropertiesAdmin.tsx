@@ -22,7 +22,7 @@ export function PropertiesAdmin() {
 
   return (
     <div>
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <div>
           <h1 className="display text-3xl text-parchment">Properties</h1>
           <p className="mt-1 text-sm text-parchment/60">Publish and manage listings.</p>

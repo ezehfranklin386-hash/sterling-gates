@@ -22,7 +22,7 @@ export function EnquiriesAdmin() {
       <h1 className="display text-3xl text-parchment">Enquiries</h1>
       <p className="mt-1 text-sm text-parchment/60">Leads from the public contact form.</p>
 
-      <div className="mt-6 flex gap-3">
+      <div className="mt-6 flex flex-wrap gap-3">
         {(['all', 'new', 'followed_up'] as const).map((f) => (
           <button
             key={f}
