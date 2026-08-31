@@ -29,7 +29,13 @@ export function Th({
   children: ReactNode;
   className?: string;
 }) {
-  return <th className={`px-4 py-3 font-medium ${className}`}>{children}</th>;
+  return (
+    <th
+      className={`px-3 py-2 text-[0.65rem] uppercase tracking-[0.15em] font-medium sm:px-4 sm:py-3 ${className}`}
+    >
+      {children}
+    </th>
+  );
 }
 
 export function Td({
@@ -39,7 +45,13 @@ export function Td({
   children: ReactNode;
   className?: string;
 }) {
-  return <td className={`px-4 py-3 text-parchment/85 ${className}`}>{children}</td>;
+  return (
+    <td
+      className={`px-3 py-2 text-sm text-parchment/85 sm:px-4 sm:py-3 ${className}`}
+    >
+      {children}
+    </td>
+  );
 }
 
 export function TRow({ children }: { children: ReactNode }) {

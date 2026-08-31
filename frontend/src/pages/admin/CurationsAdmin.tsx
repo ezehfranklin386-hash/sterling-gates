@@ -35,9 +35,9 @@ export function CurationsAdmin() {
 
   return (
     <div>
-      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+      <div className="flex items-center justify-between">
         <div>
-          <h1 className="display text-3xl text-parchment">Curations</h1>
+          <h1 className="display text-2xl text-parchment md:text-3xl">Curations</h1>
           <p className="mt-1 text-sm text-parchment/60">Curated property collections.</p>
         </div>
         <Button onClick={startNew}>New collection</Button>
@@ -55,7 +55,7 @@ export function CurationsAdmin() {
           <Table>
             <THead>
               <Th>Title</Th>
-              <Th>Filter</Th>
+              <Th className="hidden sm:table-cell">Filter</Th>
               <Th>Published</Th>
               <Th>Actions</Th>
             </THead>
@@ -63,10 +63,10 @@ export function CurationsAdmin() {
               {items.map((c) => (
                 <TRow key={c.id}>
                   <Td className="text-parchment">{c.title}</Td>
-                  <Td className="text-xs text-parchment/60">{describeFilter(c.filter)}</Td>
+                  <Td className="hidden sm:table-cell text-xs text-parchment/60">{describeFilter(c.filter)}</Td>
                   <Td>{c.published ? 'Yes' : 'Draft'}</Td>
                   <Td>
-                    <div className="flex flex-col gap-2 sm:flex-row sm:gap-4">
+                    <div className="flex gap-2 sm:gap-4">
                       <button onClick={() => startEdit(c.id)} className="text-xs uppercase tracking-[0.15em] text-brass hover:text-parchment">
                         Edit
                       </button>
@@ -152,7 +152,7 @@ function CurationEditor({
   }
 
   return (
-    <div className="mt-8 max-w-full sm:max-w-2xl border border-parchment/10 bg-emerald-light p-7">
+    <div className="mt-8 max-w-2xl border border-parchment/10 bg-emerald-light p-7">
       <form onSubmit={onSubmit} className="space-y-5">
         <div>
           <FieldLabel>Title</FieldLabel>
@@ -202,7 +202,7 @@ function CurationEditor({
         </div>
 
         <Toggle checked={!!form.published} onChange={(v) => set('published', v)} label="Published" />
-        <div className="flex flex-col gap-2 sm:flex-row sm:gap-3">
+        <div className="flex gap-3">
           <Button type="submit" disabled={create.isPending || update.isPending}>Save</Button>
           <Button variant="ghost" type="button" onClick={onDone}>Cancel</Button>
         </div>

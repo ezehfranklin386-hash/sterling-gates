@@ -24,7 +24,7 @@ export function PropertiesAdmin() {
     <div>
       <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <div>
-          <h1 className="display text-3xl text-parchment">Properties</h1>
+          <h1 className="display text-2xl text-parchment md:text-3xl">Properties</h1>
           <p className="mt-1 text-sm text-parchment/60">Publish and manage listings.</p>
         </div>
         <Link to="/admin/properties/new">
@@ -41,10 +41,10 @@ export function PropertiesAdmin() {
           <Table>
             <THead>
               <Th>Title</Th>
-              <Th>Area</Th>
-              <Th>Class</Th>
-              <Th>Status</Th>
-              <Th>Published</Th>
+              <Th className="hidden sm:table-cell">Area</Th>
+              <Th className="hidden md:table-cell">Class</Th>
+              <Th className="hidden sm:table-cell">Status</Th>
+              <Th className="hidden sm:table-cell">Published</Th>
               <Th>Actions</Th>
             </THead>
             <tbody>
@@ -56,10 +56,10 @@ export function PropertiesAdmin() {
                     </Link>
                     <span className="block text-xs text-parchment/40">{displayPrice(p)}</span>
                   </Td>
-                  <Td>{p.area ?? '—'}</Td>
-                  <Td>{p.assetClass}</Td>
-                  <Td>{p.status}</Td>
-                  <Td>{p.published ? 'Yes' : 'Draft'}</Td>
+                  <Td className="hidden sm:table-cell">{p.area ?? '—'}</Td>
+                  <Td className="hidden md:table-cell">{p.assetClass}</Td>
+                  <Td className="hidden sm:table-cell">{p.status}</Td>
+                  <Td className="hidden sm:table-cell">{p.published ? 'Yes' : 'Draft'}</Td>
                   <Td>
                     <button
                       onClick={() => setPending(p.id)}

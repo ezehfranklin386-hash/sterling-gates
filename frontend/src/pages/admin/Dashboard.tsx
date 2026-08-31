@@ -16,7 +16,7 @@ export function Dashboard() {
 
   return (
     <div>
-      <h1 className="display text-3xl text-parchment">Dashboard</h1>
+      <h1 className="display text-2xl text-parchment md:text-3xl">Dashboard</h1>
       <p className="mt-1 text-sm text-parchment/60">Overview of your platform.</p>
       <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
         <StatTile label="Blogs" value={blogs.data?.length} to="/admin/blogs" />

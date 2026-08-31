@@ -24,7 +24,7 @@ export function BlogsAdmin() {
     <div>
       <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <div>
-          <h1 className="display text-3xl text-parchment">Blogs</h1>
+          <h1 className="display text-2xl text-parchment md:text-3xl">Blogs</h1>
           <p className="mt-1 text-sm text-parchment/60">Publish and manage articles.</p>
         </div>
         <Link to="/admin/blogs/new">
@@ -41,9 +41,9 @@ export function BlogsAdmin() {
           <Table>
             <THead>
               <Th>Title</Th>
-              <Th>Author</Th>
+              <Th className="hidden sm:table-cell">Author</Th>
               <Th>Published</Th>
-              <Th>Date</Th>
+              <Th className="hidden sm:table-cell">Date</Th>
               <Th>Actions</Th>
             </THead>
             <tbody>
@@ -54,9 +54,9 @@ export function BlogsAdmin() {
                       {b.title}
                     </Link>
                   </Td>
-                  <Td>{b.author}</Td>
+                  <Td className="hidden sm:table-cell">{b.author}</Td>
                   <Td>{b.published ? 'Yes' : 'Draft'}</Td>
-                  <Td>{formatDate(b.publishedAt ?? b.createdAt)}</Td>
+                  <Td className="hidden sm:table-cell">{formatDate(b.publishedAt ?? b.createdAt)}</Td>
                   <Td>
                     <button
                       onClick={() => setPending(b.id)}

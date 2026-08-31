@@ -92,16 +92,16 @@ export function BlogEditor() {
           <Link to="/admin/blogs" className="text-xs uppercase tracking-[0.15em] text-brass hover:text-parchment">
             ← Blogs
           </Link>
-          <h1 className="display mt-2 text-3xl text-parchment">
+          <h1 className="display mt-2 text-2xl text-parchment md:text-3xl">
             {editing ? 'Edit article' : 'New article'}
           </h1>
         </div>
-        <Button onClick={() => void onSubmit} disabled={update.isPending || create.isPending}>
+        <Button type="submit" form="blog-form" disabled={update.isPending || create.isPending}>
           Save
         </Button>
       </div>
 
-      <form onSubmit={onSubmit} className="mt-8 space-y-6">
+      <form id="blog-form" onSubmit={onSubmit} className="mt-8 space-y-6">
         <div>
           <FieldLabel>Title</FieldLabel>
           <Input required value={form.title} onChange={(e) => applyTitle(e.target.value)} />

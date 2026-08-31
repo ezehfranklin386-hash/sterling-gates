@@ -69,7 +69,8 @@ export function FieldLabel({ children }: { children: ReactNode }) {
 
 const inputClasses =
   'w-full bg-emerald-light border border-parchment/20 px-4 py-3 text-parchment ' +
-  'placeholder:text-parchment/40 focus:border-gold focus:outline-none transition-colors';
+  'placeholder:text-parchment/40 focus:border-gold focus:outline-none ' +
+  'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass transition-colors';
 
 export function Input({ className = '', ...props }: InputHTMLAttributes<HTMLInputElement>) {
   return <input className={`${inputClasses} ${className}`} {...props} />;
@@ -108,7 +109,7 @@ export function Toggle({ checked, onChange, label }: ToggleProps) {
         aria-checked={checked}
         aria-label={label}
         onClick={() => onChange(!checked)}
-        className={`relative h-6 w-11 rounded-full border transition-colors ${
+        className={`relative h-6 w-11 rounded-full border transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass ${
           checked ? 'bg-brass border-brass' : 'bg-emerald-light border-parchment/30'
         }`}
       >

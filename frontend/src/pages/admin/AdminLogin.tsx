@@ -25,7 +25,7 @@ export function AdminLogin() {
           <Monogram />
           <span className="text-xs uppercase tracking-[0.3em] text-gold">Back office access</span>
         </div>
-        <form onSubmit={onSubmit} className="mt-8 space-y-5 border border-parchment/10 bg-emerald-light p-8">
+        <form onSubmit={onSubmit} className="mt-8 space-y-5 border border-parchment/10 bg-emerald-light p-5 sm:p-8">
           <div>
             <FieldLabel>Email</FieldLabel>
             <Input required type="email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="username" />

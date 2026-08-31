@@ -109,16 +109,16 @@ export function PropertyEditor() {
           <Link to="/admin/properties" className="text-xs uppercase tracking-[0.15em] text-brass hover:text-parchment">
             ← Properties
           </Link>
-          <h1 className="display mt-2 text-3xl text-parchment">
+          <h1 className="display mt-2 text-2xl text-parchment md:text-3xl">
             {editing ? 'Edit property' : 'New property'}
           </h1>
         </div>
-        <Button onClick={() => void onSubmit} disabled={update.isPending || create.isPending}>
+        <Button type="submit" form="property-form" disabled={update.isPending || create.isPending}>
           Save
         </Button>
       </div>
 
-      <form onSubmit={onSubmit} className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
+      <form id="property-form" onSubmit={onSubmit} className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
         <div className="md:col-span-2">
           <FieldLabel>Title</FieldLabel>
           <Input required value={form.title} onChange={(e) => set('title', e.target.value)} />
@@ -156,7 +156,7 @@ export function PropertyEditor() {
           <FieldLabel>Price (USD)</FieldLabel>
           <Input type="number" value={form.price ?? 0} onChange={(e) => set('price', Number(e.target.value))} />
         </div>
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-3">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           <div>
             <FieldLabel>Size value</FieldLabel>
             <Input type="number" value={form.size?.value ?? 0} onChange={(e) => set('size', { ...(form.size ?? { value: 0, unit: 'sqm' }), value: Number(e.target.value) })} />
@@ -177,7 +177,7 @@ export function PropertyEditor() {
             ))}
           </Select>
         </div>
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-3">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           <div>
             <FieldLabel>Bedrooms</FieldLabel>
             <Input type="number" value={form.bedrooms ?? ''} onChange={(e) => set('bedrooms', e.target.value ? Number(e.target.value) : undefined)} />

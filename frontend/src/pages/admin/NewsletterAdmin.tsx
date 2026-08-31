@@ -16,7 +16,7 @@ export function NewsletterAdmin() {
 
   return (
     <div>
-      <h1 className="display text-3xl text-parchment">Newsletter</h1>
+      <h1 className="display text-2xl text-parchment md:text-3xl">Newsletter</h1>
       <p className="mt-1 text-sm text-parchment/60">Subscribers to The Sterling Intelligence Brief.</p>
 
       {isLoading ? (
@@ -28,16 +28,16 @@ export function NewsletterAdmin() {
           <Table>
             <THead>
               <Th>Email</Th>
-              <Th>Status</Th>
-              <Th>Subscribed</Th>
+              <Th className="hidden sm:table-cell">Status</Th>
+              <Th className="hidden sm:table-cell">Subscribed</Th>
               <Th>Actions</Th>
             </THead>
             <tbody>
               {items.map((s) => (
                 <TRow key={s.id}>
                   <Td className="text-parchment">{s.email}</Td>
-                  <Td className="capitalize">{s.status}</Td>
-                  <Td>{formatDate(s.createdAt)}</Td>
+                  <Td className="hidden sm:table-cell capitalize">{s.status}</Td>
+                  <Td className="hidden sm:table-cell">{formatDate(s.createdAt)}</Td>
                   <Td>
                     <button
                       onClick={() =>

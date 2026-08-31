@@ -19,7 +19,7 @@ export function EnquiriesAdmin() {
 
   return (
     <div>
-      <h1 className="display text-3xl text-parchment">Enquiries</h1>
+      <h1 className="display text-2xl text-parchment md:text-3xl">Enquiries</h1>
       <p className="mt-1 text-sm text-parchment/60">Leads from the public contact form.</p>
 
       <div className="mt-6 flex flex-wrap gap-3">
@@ -45,9 +45,9 @@ export function EnquiriesAdmin() {
           <Table>
             <THead>
               <Th>Name</Th>
-              <Th>Archetype</Th>
-              <Th>Message</Th>
-              <Th>Date</Th>
+              <Th className="hidden sm:table-cell">Archetype</Th>
+              <Th className="hidden md:table-cell">Message</Th>
+              <Th className="hidden sm:table-cell">Date</Th>
               <Th>Status</Th>
               <Th>Actions</Th>
             </THead>
@@ -58,13 +58,13 @@ export function EnquiriesAdmin() {
                     <span className="text-parchment">{enq.name}</span>
                     <a href={`mailto:${enq.email}`} className="block text-xs text-brass">{enq.email}</a>
                   </Td>
-                  <Td className="capitalize">{enq.archetype}</Td>
-                  <Td className="max-w-xs">
+                  <Td className="capitalize hidden sm:table-cell">{enq.archetype}</Td>
+                  <Td className="hidden md:table-cell max-w-xs">
                     <span className="line-clamp-2 text-parchment/70">
                       {enq.propertySlug ? `[${enq.propertySlug}] ` : ''}{enq.message}
                     </span>
                   </Td>
-                  <Td>{formatDate(enq.createdAt)}</Td>
+                  <Td className="hidden sm:table-cell">{formatDate(enq.createdAt)}</Td>
                   <Td className={enq.status === 'new' ? 'text-brass' : 'text-parchment/50'}>
                     {enq.status.replace('_', ' ')}
                   </Td>
@@ -72,6 +72,7 @@ export function EnquiriesAdmin() {
                     {enq.status === 'new' ? (
                       <Button
                         variant="ghost"
+                        className="text-[0.6rem] px-3 py-1"
                         onClick={() =>
                           mark.mutate(enq.id, {
                             onSuccess: () => toast('Marked as followed up.'),

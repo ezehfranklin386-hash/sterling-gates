@@ -25,9 +25,9 @@ export function AdvisorsAdmin() {
 
   return (
     <div>
-      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+      <div className="flex items-center justify-between">
         <div>
-          <h1 className="display text-3xl text-parchment">Advisors</h1>
+          <h1 className="display text-2xl text-parchment md:text-3xl">Advisors</h1>
           <p className="mt-1 text-sm text-parchment/60">Team profiles shown on the public site.</p>
         </div>
         <Button onClick={() => { setEditingId(null); setEditor(true); }}>New advisor</Button>
@@ -46,8 +46,8 @@ export function AdvisorsAdmin() {
           <Table>
             <THead>
               <Th>Name</Th>
-              <Th>Role</Th>
-              <Th>Order</Th>
+              <Th className="hidden sm:table-cell">Role</Th>
+              <Th className="hidden md:table-cell">Order</Th>
               <Th>Published</Th>
               <Th>Actions</Th>
             </THead>
@@ -55,11 +55,11 @@ export function AdvisorsAdmin() {
               {items.map((a) => (
                 <TRow key={a.id}>
                   <Td className="text-parchment">{a.name}</Td>
-                  <Td>{a.role}</Td>
-                  <Td>{a.sortOrder}</Td>
+                  <Td className="hidden sm:table-cell">{a.role}</Td>
+                  <Td className="hidden md:table-cell">{a.sortOrder}</Td>
                   <Td>{a.published ? 'Yes' : 'Draft'}</Td>
                   <Td>
-                    <div className="flex flex-col gap-2 sm:flex-row sm:gap-4">
+                    <div className="flex gap-2 sm:gap-4">
                       <button onClick={() => { setEditingId(a.id); setEditor(true); }} className="text-xs uppercase tracking-[0.15em] text-brass hover:text-parchment">
                         Edit
                       </button>
@@ -142,9 +142,9 @@ function AdvisorEditor({
   }
 
   return (
-    <div className="mt-8 max-w-full sm:max-w-2xl border border-parchment/10 bg-emerald-light p-7">
+    <div className="mt-8 max-w-2xl border border-parchment/10 bg-emerald-light p-7">
       <form onSubmit={onSubmit} className="space-y-5">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div>
             <FieldLabel>Name</FieldLabel>
             <Input required value={form.name} onChange={(e) => set('name', e.target.value)} />
@@ -154,7 +154,7 @@ function AdvisorEditor({
             <Input value={form.role} onChange={(e) => set('role', e.target.value)} />
           </div>
         </div>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div>
             <FieldLabel>Sort order</FieldLabel>
             <Input type="number" value={form.sortOrder} onChange={(e) => set('sortOrder', Number(e.target.value))} />
@@ -173,7 +173,7 @@ function AdvisorEditor({
           <ImageUploader label="Photo" currentUrl={form.photoUrl} onUploaded={(url) => set('photoUrl', url)} />
         </div>
         <Toggle checked={!!form.published} onChange={(v) => set('published', v)} label="Published" />
-        <div className="flex flex-col gap-2 sm:flex-row sm:gap-3">
+        <div className="flex gap-3">
           <Button type="submit" disabled={create.isPending || update.isPending}>Save</Button>
           <Button variant="ghost" type="button" onClick={onDone}>Cancel</Button>
         </div>
