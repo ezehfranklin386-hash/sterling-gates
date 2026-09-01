@@ -1,13 +1,14 @@
 // Brand typography primitives. All public copy renders through these so the
 // font/tone hierarchy stays consistent (docs/frontend-spec.md §2).
 
-import type { ReactNode } from 'react';
+import type { ReactNode, ImgHTMLAttributes } from 'react';
 
 interface SectionLabelProps {
   children: ReactNode;
   className?: string;
 }
 
+/** Classic "SG" monogram — inline SVG, no external assets. */
 export function Monogram({ className = '' }: { className?: string }) {
   return (
     <svg
@@ -30,6 +31,25 @@ export function Monogram({ className = '' }: { className?: string }) {
         SG
       </text>
     </svg>
+  );
+}
+
+/** Full Sterling Gates logo image (interlocking S+G monogram + logotype).
+ *  Uses the responsive logo in /public/logo.jpg with proper alt text. */
+export function Logo({
+  className = '',
+  alt = 'Sterling Gates',
+  ...rest
+}: ImgHTMLAttributes<HTMLImageElement> & { className?: string }) {
+  return (
+    <img
+      src="/logo.jpg"
+      alt={alt}
+      className={`object-contain ${className}`}
+      width="200"
+      height="80"
+      {...rest}
+    />
   );
 }
 

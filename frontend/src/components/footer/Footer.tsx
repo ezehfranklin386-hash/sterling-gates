@@ -9,7 +9,7 @@ import { BRAND, CONTACT_EMAIL } from '../../lib/brand';
 import { useSettings } from '../../hooks/useSettings';
 import { useSubscribe } from '../../hooks/useNewsletter';
 import { useToast } from '../ui/Toast';
-import { Monogram } from '../brand/Brand';
+import { Logo } from '../brand/Brand';
 
 export function Footer() {
   return <FooterInner />;
@@ -39,7 +39,7 @@ function FooterInner() {
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-5 py-14 md:grid-cols-4">
         <div className="md:col-span-2">
           <div className="flex items-center gap-3">
-            <Monogram />
+            <Logo className="h-10 w-auto" />
             <span className="font-display text-xl text-parchment">Sterling Gates</span>
           </div>
           <p className="mt-3 font-display text-lg italic text-brass">{BRAND.tagline}</p>

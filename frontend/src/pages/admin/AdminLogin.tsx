@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
-import { Monogram } from '../../components/brand/Brand';
+import { Logo } from '../../components/brand/Brand';
 import { Button, FieldLabel, Input } from '../../components/ui/primitives';
 
 export function AdminLogin() {
@@ -22,7 +22,7 @@ export function AdminLogin() {
     <div className="flex min-h-screen items-center justify-center bg-emerald px-5">
       <div className="w-full max-w-sm">
         <div className="flex flex-col items-center gap-3 text-center">
-          <Monogram />
+          <Logo className="h-16 w-auto" />
           <span className="text-xs uppercase tracking-[0.3em] text-gold">Back office access</span>
         </div>
         <form onSubmit={onSubmit} className="mt-8 space-y-5 border border-parchment/10 bg-emerald-light p-5 sm:p-8">
