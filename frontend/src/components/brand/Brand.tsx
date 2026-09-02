@@ -35,7 +35,7 @@ export function Monogram({ className = '' }: { className?: string }) {
 }
 
 /** Full Sterling Gates logo image (interlocking S+G monogram + logotype).
- *  Uses the responsive logo in /public/logo.jpg with proper alt text. */
+ *  Uses the responsive logo in /public/logo.png with proper alt text. */
 export function Logo({
   className = '',
   alt = 'Sterling Gates',
@@ -43,7 +43,7 @@ export function Logo({
 }: ImgHTMLAttributes<HTMLImageElement> & { className?: string }) {
   return (
     <img
-      src="/logo.jpg"
+      src="/logo.png"
       alt={alt}
       className={`object-contain ${className}`}
       width="200"
