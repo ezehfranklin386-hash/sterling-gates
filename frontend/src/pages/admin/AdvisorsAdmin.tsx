@@ -142,7 +142,7 @@ function AdvisorEditor({
   }
 
   return (
-    <div className="mt-8 max-w-2xl border border-parchment/10 bg-emerald-light p-7">
+    <div className="mt-8 max-w-2xl border border-parchment/10 bg-emerald-light p-5 sm:p-7">
       <form onSubmit={onSubmit} className="space-y-5">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div>

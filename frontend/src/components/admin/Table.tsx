@@ -31,7 +31,7 @@ export function Th({
 }) {
   return (
     <th
-      className={`px-3 py-2 text-[0.65rem] uppercase tracking-[0.15em] font-medium sm:px-4 sm:py-3 ${className}`}
+      className={`px-3.5 py-2.5 text-[0.7rem] uppercase tracking-[0.15em] font-medium sm:px-4 sm:py-3 touch-target ${className}`}
     >
       {children}
     </th>
@@ -47,7 +47,7 @@ export function Td({
 }) {
   return (
     <td
-      className={`px-3 py-2 text-sm text-parchment/85 sm:px-4 sm:py-3 ${className}`}
+      className={`px-3.5 py-2.5 text-sm text-parchment/85 sm:px-4 sm:py-3 touch-target ${className}`}
     >
       {children}
     </td>

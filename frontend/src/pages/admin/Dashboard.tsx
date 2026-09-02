@@ -18,7 +18,7 @@ export function Dashboard() {
     <div>
       <h1 className="display text-2xl text-parchment md:text-3xl">Dashboard</h1>
       <p className="mt-1 text-sm text-parchment/60">Overview of your platform.</p>
-      <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-6 grid grid-cols-1 gap-4 sm:mt-8 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-5">
         <StatTile label="Blogs" value={blogs.data?.length} to="/admin/blogs" />
         <StatTile label="Properties" value={props.data?.length} to="/admin/properties" />
         <StatTile label="Enquiries" value={enquiries.data?.length} to="/admin/enquiries" />

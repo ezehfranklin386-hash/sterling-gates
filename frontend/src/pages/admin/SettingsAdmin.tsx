@@ -60,7 +60,7 @@ export function SettingsAdmin() {
         The contact number here is what clients see and how the enquiry's WhatsApp link is built.
       </p>
 
-      <form onSubmit={onSave} className="mt-8 space-y-6 border border-parchment/10 bg-emerald-light p-7">
+      <form onSubmit={onSave} className="mt-8 space-y-6 border border-parchment/10 bg-emerald-light p-5 sm:p-7">
         <div>
           <FieldLabel>Contact number (display form)</FieldLabel>
           <Input value={contactPhoneLabel} onChange={(e) => setContactPhoneLabel(e.target.value)} placeholder="+234 801 234 5678" />

@@ -16,9 +16,9 @@ export function StatTile({
   return (
     <a
       href={to}
-      className="block border border-parchment/10 bg-emerald-light p-3 sm:p-6 transition-colors hover:border-gold/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass"
+      className="block border border-parchment/10 bg-emerald-light p-4 min-h-[88px] sm:p-6 transition-colors hover:border-gold/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass"
     >
-      <p className="text-[0.7rem] uppercase tracking-[0.18em] text-gold">{label}</p>
+      <p className="text-[0.65rem] uppercase tracking-[0.18em] text-gold">{label}</p>
       <p className="display mt-2 text-3xl text-brass sm:text-4xl">{value ?? '–'}</p>
     </a>
   );

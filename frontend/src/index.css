@@ -59,6 +59,12 @@ body {
   color: #f0ede6;
 }
 
+/* Mobile touch targets — meet 44px minimum on touch devices */
+.touch-target {
+  min-height: 44px;
+  vertical-align: middle;
+}
+
 /* Focus visibility for accessibility */
 :focus-visible {
   outline: 2px solid #e6cb85;

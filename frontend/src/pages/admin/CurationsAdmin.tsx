@@ -152,7 +152,7 @@ function CurationEditor({
   }
 
   return (
-    <div className="mt-8 max-w-2xl border border-parchment/10 bg-emerald-light p-7">
+    <div className="mt-8 max-w-2xl border border-parchment/10 bg-emerald-light p-5 sm:p-7">
       <form onSubmit={onSubmit} className="space-y-5">
         <div>
           <FieldLabel>Title</FieldLabel>

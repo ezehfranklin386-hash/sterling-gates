@@ -68,7 +68,7 @@ export function FieldLabel({ children }: { children: ReactNode }) {
 }
 
 const inputClasses =
-  'w-full bg-emerald-light border border-parchment/20 px-4 py-3 text-parchment ' +
+  'w-full bg-emerald-light border border-parchment/20 px-4 py-3 text-parchment min-h-[48px] ' +
   'placeholder:text-parchment/40 focus:border-gold focus:outline-none ' +
   'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass transition-colors';
 

@@ -118,7 +118,7 @@ export function PropertyEditor() {
         </Button>
       </div>
 
-      <form id="property-form" onSubmit={onSubmit} className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
+      <form id="property-form" onSubmit={onSubmit} className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6">
         <div className="md:col-span-2">
           <FieldLabel>Title</FieldLabel>
           <Input required value={form.title} onChange={(e) => set('title', e.target.value)} />
