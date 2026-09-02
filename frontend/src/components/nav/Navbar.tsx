@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { FiArrowUpRight, FiMenu, FiX } from 'react-icons/fi';
-import { Monogram, Logo } from '../brand/Brand';
+import { Logo } from '../brand/Brand';
 import { Button } from '../ui/primitives';
 
 const LINKS = [
@@ -25,13 +25,7 @@ export function Navbar() {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-parchment/10 bg-emerald/75 backdrop-blur-xl supports-[backdrop-filter]:bg-emerald/60">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5">
         <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          {/* Full logo on desktop, monogram only on mobile */}
-          <span className="hidden sm:inline-block">
-            <Logo className="h-10 w-auto" />
-          </span>
-          <span className="sm:hidden">
-            <Monogram />
-          </span>
+          <Logo className="h-10 w-auto" />
           <div className="leading-none">
             <span className="block font-display text-lg tracking-wide text-parchment">
               Sterling Gates
