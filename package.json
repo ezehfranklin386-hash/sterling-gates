@@ -2,13 +2,10 @@
   "name": "sterling-gates-platform",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "typecheck": "tsc --noEmit",
-    "test": "jest",
     "lint": "next lint"
   },
   "dependencies": {
@@ -19,18 +16,16 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.7.0",
-    "react-router-dom": "^6.26.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",
+    "@types/node": "^20",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "@types/supertest": "^2.0.12",
     "autoprefixer": "^10.4.19",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
-    "next": "^15.0.0",
     "postcss": "^8.4.40",
     "supertest": "^6.3.4",
     "tailwindcss": "^3.4.7",
