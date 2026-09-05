@@ -1,77 +1,104 @@
-# Sterling Gates Consultancy & Realty — Web Platform
+# Sterling Gates Platform
 
-> **Delivering Value. Building Legacies.**
-
-This repository is the complete blueprint for the **Sterling Gates** production web
-platform — an elite real estate advisory and consultancy firm headquartered in Lagos,
-Nigeria, with a global outlook (London · Lagos · Global).
+A Next.js application for Sterling Gates Consultancy & Realty.
 
 ## What this is
 
-A full project specification written as documentation, so the platform can be handed
-to any developer (or built later) without ambiguity. The platform comprises:
+A full-stack platform built with Next.js, featuring:
 
-- **Public website** — promotes the firm and its consultancy services (brand-driven,
-  luxury aesthetic per the Brand Strategy), includes a live **Properties** showcase and
-  an **Insights** blog.
-- **Admin panel** — password-protected area where an admin can **post blogs**,
-  **post properties**, and **change the client contact number**.
-- **Enquiry system** — the public contact form delivers enquiries to the admin's
-  **WhatsApp** and **email**, using a contact number stored in settings.
+- **API Routes** - Serverless API endpoints for all backend functionality
+- **Supabase Integration** - Authentication, database, and storage
+- **Admin Panel** - Protected admin interfaces (coming soon)
+- **Public Website** - Property showcase and insights (coming soon)
 
-## Repository layout
+## Repository Layout
 
-| Path        | What it is                                       |
-|-------------|--------------------------------------------------|
-| `frontend/` | React + Vite + Tailwind SPA (public site + admin) |
-| `backend/`  | NestJS REST API (serverless entry in `api/`)      |
-| `supabase/` | SQL schema + setup/seed scripts                    |
-| `docs/`     | Project specifications (see index below)           |
+| Path         | What it is                                              |
+|--------------|---------------------------------------------------------|
+| `app/`       | Next.js App Router (pages + API routes)                |
+| `lib/`       | Shared utilities (Supabase client, auth, validation)   |
+| `__tests__/` | API and unit tests                                      |
+| `docs/`      | Project specifications and documentation                |
+| `supabase/`  | SQL schema and setup/seed scripts                       |
 
-Both apps deploy to **Vercel** from this single repository: the backend builds with
-Root Directory `backend` (serverless handler in `api/index.ts`), and the frontend
-with Root Directory `frontend` (Vite static build → `dist/`). See `docs/10-setup-guide.md`.
-## Tech stack (per project decision)
+## Tech Stack
 
-| Layer    | Technology |
-|----------|-----------|
-| Frontend | React + Vite + **Tailwind CSS** |
-| Backend  | **NestJS** (REST API) |
-| Platform | **Supabase** — Auth, Postgres, Storage |
-| Email    | Nodemailer (via NestJS) |
-| WhatsApp | wa.me deep links built from config |
+| Layer    | Technology                          |
+|----------|-------------------------------------|
+| Frontend | Next.js 15 (App Router) + React 18  |
+| Backend  | Next.js API Routes + Supabase       |
+| Styling  | Tailwind CSS                        |
+| Database | Supabase Postgres                   |
+| Auth     | Supabase Auth                       |
+| Storage  | Supabase Storage                    |
 
-## Documentation index
+## Setup
 
-| Document | Description |
-|----------|-------------|
-| [01 — Project Brief](docs/01-project-brief.md) | Goal, scope, roles, user stories, success criteria |
-| [02 — Brand Guide](docs/02-brand-guide.md) | Palette, typography, tone guardrails, messaging framework |
-| [03 — Tech Stack](docs/03-tech-stack.md) | Architecture decision record + rationale |
-| [04 — System Architecture](docs/04-system-architecture.md) | Components, data flow, diagram |
-| [05 — Database Schema](docs/05-database-schema.md) | Firestore collections and fields |
-| [06 — API Specification](docs/06-api-specification.md) | All NestJS endpoints |
-| [07 — Admin Panel Spec](docs/07-admin-panel-spec.md) | Admin features and security |
-| [08 — Public Site Spec](docs/08-public-site-spec.md) | Public pages/sections |
-| [09 — Enquiry Workflow](docs/09-enquiry-workflow.md) | Contact → WhatsApp + email flow |
-| [10 — Setup Guide](docs/10-setup-guide.md) | Local dev + deployment |
-| [FE — Frontend Spec](docs/frontend-spec.md) | React + Vite + Tailwind build detail |
-| [BE — Backend Spec](docs/backend-spec.md) | NestJS + Supabase build detail |
-| [BUILD — Step-by-Step Plan](docs/build-plan.md) | Ordered build sequence, both sides |
-| [11 — Feature Enhancements](docs/11-feature-enhancements.md) | Extra features inspired by cwlagos.com |
+### Installation
 
-## Reading order
+```bash
+npm install
+```
 
-Start with **01 — Project Brief**, then **04 — System Architecture**, then read the
-other docs as needed. **02 — Brand Guide** is the single source of truth for visuals
-and copy tone — every UI decision must defer to it.
+### Environment Variables
 
-## Status
+```bash
+# Supabase
+NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+```
 
-- [x] Project plan & requirements
-- [x] Brand guide extracted from `Sterling_Gates_Brand_Strategy_v2.0 - Copy.pdf`
-- [x] Architecture / schema / API / admin / site specs
-- [x] **Frontend** and **Backend** build specs
-- [ ] Application code (next phase, following `10 — Setup Guide`)
+### Development
 
-© 2026 Sterling Gates Consultancy & Realty. Confidential & Proprietary.
+```bash
+npm run dev
+```
+
+### Build
+
+```bash
+npm run build
+```
+
+### Test
+
+```bash
+npm test
+```
+
+## API Endpoints
+
+### Public Endpoints
+- `GET /api/health` - Health check
+- `GET /api/advisors` - List advisors
+- `GET /api/blogs` - List published blogs
+- `GET /api/properties` - List available properties with search
+- `GET /api/curations` - List published curations
+- `GET /api/settings/public` - Public settings
+- `POST /api/auth/login` - User login
+- `POST /api/enquiries` - Submit enquiry
+- `POST /api/newsletter` - Subscribe to newsletter
+- `POST /api/uploads` - Upload file (requires auth)
+
+### Protected Endpoints
+- `GET /api/auth/me` - Get current user
+- `POST /api/advisors` - Create advisor
+- `PATCH /api/advisors/[id]` - Update advisor
+- `DELETE /api/advisors/[id]` - Delete advisor
+- And more admin endpoints in each module
+
+## Deployment
+
+Deploy to Vercel with zero configuration:
+
+1. Connect your GitHub repository to Vercel
+2. Add environment variables
+3. Deploy
+
+## Documentation
+
+See the [docs](./docs) directory for complete project specifications.
+
+---
+
+> **Delivering Value. Building Legacies.**
