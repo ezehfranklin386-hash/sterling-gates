@@ -1,0 +1,2 @@
+{"sequence":1,"timestamp":"2026-09-01T08:26:55.1193466+01:00","event_type":"state_change","task_id":"20260831-012804.496419800-laguna-s-2.1-free--bash-2","session_id":"20260831-012804.496419800-laguna-s-2.1-free","state":"running","runtime_state":"alive"}
+{"sequence":2,"timestamp":"2026-09-01T08:27:57.1634041+01:00","event_type":"state_change","task_id":"20260831-012804.496419800-laguna-s-2.1-free--bash-2","session_id":"20260831-012804.496419800-laguna-s-2.1-free","state":"failed","runtime_state":"exited","error_code":"job_failed"}

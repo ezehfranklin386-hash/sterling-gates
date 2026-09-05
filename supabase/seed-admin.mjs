@@ -30,7 +30,8 @@ const sb = createClient(url, serviceKey, {
 
 const email = get('email') ?? 'admin@sterlinggates.ng';
 const password = get('password') ?? 'Admin123!';
-const phone = get('phone') ?? '2348012345678';
+const phone = get('phone') ?? '2349032133702';
+const contactEmail = get('contact-email') ?? 'sterlinggatesrealty@gmail.com';
 const name = get('name') ?? 'Ada Eze';
 
 async function main() {
@@ -75,7 +76,7 @@ async function main() {
       id: 1,
       contact_phone: phone,
       contact_phone_label: 'WhatsApp / Call',
-      admin_email: email,
+      admin_email: contactEmail,
       emails_enabled: true,
       whatsapp_enabled: true,
     });

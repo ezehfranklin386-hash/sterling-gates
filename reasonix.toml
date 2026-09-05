@@ -1,0 +1,5 @@
+[permissions]
+allow = []
+
+[sandbox]
+allow_write = ["${HOME}/Desktop/dan-nextjs-migration/__tests__/api"]

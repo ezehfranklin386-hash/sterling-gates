@@ -1,4 +1,4 @@
-// Typed API client for the NestJS backend (docs/backend-spec.md).
+// Typed API client for the Next.js backend
 // Every read, write, enquiry, subscription and admin call goes through this
 // HTTP client.
 
@@ -26,7 +26,8 @@ export class ApiError extends Error {
   }
 }
 
-const base = import.meta.env.VITE_API_URL ?? 'http://localhost:4000/api';
+// Use relative API paths since Next.js API routes are served from the same origin
+const base = '';
 
 interface RequestOptions {
   method?: 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE';
@@ -77,34 +78,36 @@ export interface PropertyQuery {
 
 export const api = {
   // ---- Settings ----
-  getSettings: () => request<PublicSettings>(`/settings`),
+  getPublicSettings: () => request<PublicSettings>(`/api/settings/public`),
+  getSettings: (token: string) => request<AdminSettings>(`/api/settings`, { token }),
   updateSettings: (body: AdminSettings, token: string) =>
-    request<AdminSettings>(`/settings`, { method: 'PUT', body, token }),
+    request<AdminSettings>(`/api/settings`, { method: 'PUT', body, token }),
 
   // ---- Blogs ----
   listBlogs: (params?: { limit?: number; page?: number; tag?: string }) =>
-    request<Paginated<Blog>>(`/blogs${qs(params)}`),
-  getBlog: (slug: string) => request<Blog>(`/blogs/${slug}`),
-  adminBlogs: (token: string) => request<Blog[]>(`/blogs/admin`, { token }),
+    request<Paginated<Blog>>(`/api/blogs${qs(params)}`),
+  getBlog: (slug: string) => request<Blog>(`/api/blogs/${slug}`),
+  adminBlogs: (token: string) => request<Blog[]>(`/api/blogs/admin`, { token }),
   createBlog: (body: Partial<Blog>, token: string) =>
-    request<Blog>(`/blogs`, { method: 'POST', body, token }),
+    request<Blog>(`/api/blogs`, { method: 'POST', body, token }),
   updateBlog: (id: string, body: Partial<Blog>, token: string) =>
-    request<Blog>(`/blogs/${id}`, { method: 'PATCH', body, token }),
+    request<Blog>(`/api/blogs/${id}`, { method: 'PATCH', body, token }),
   deleteBlog: (id: string, token: string) =>
-    request<void>(`/blogs/${id}`, { method: 'DELETE', token }),
+    request<void>(`/api/blogs/${id}`, { method: 'DELETE', token }),
 
   // ---- Properties ----
   listProperties: (params?: PropertyQuery) =>
-    request<Paginated<Property>>(`/properties${qs(params)}`),
-  getProperty: (slug: string) => request<Property>(`/properties/${slug}`),
+    request<Paginated<Property>>(`/api/properties${qs(params)}`),
+  getPropertyBySlug: (slug: string) => request<Property>(`/api/properties/${slug}`),
+  getProperty: (id: string) => request<Property>(`/api/properties/${id}`),
   adminProperties: (token: string) =>
-    request<Property[]>(`/properties/admin`, { token }),
+    request<Property[]>(`/api/properties/admin`, { token }),
   createProperty: (body: Partial<Property>, token: string) =>
-    request<Property>(`/properties`, { method: 'POST', body, token }),
+    request<Property>(`/api/properties`, { method: 'POST', body, token }),
   updateProperty: (id: string, body: Partial<Property>, token: string) =>
-    request<Property>(`/properties/${id}`, { method: 'PATCH', body, token }),
+    request<Property>(`/api/properties/${id}`, { method: 'PATCH', body, token }),
   deleteProperty: (id: string, token: string) =>
-    request<void>(`/properties/${id}`, { method: 'DELETE', token }),
+    request<void>(`/api/properties/${id}`, { method: 'DELETE', token }),
 
   // ---- Enquiries ----
   submitEnquiry: (body: {
@@ -113,11 +116,11 @@ export const api = {
     archetype: string;
     message: string;
     propertySlug?: string;
-  }) => request<EnquiryResult>(`/enquiries`, { method: 'POST', body }),
+  }) => request<EnquiryResult>(`/api/enquiries`, { method: 'POST', body }),
   listEnquiries: (token: string, status?: string) =>
-    request<Enquiry[]>(`/enquiries${qs(status ? { status } : undefined)}`, { token }),
+    request<Enquiry[]>(`/api/enquiries${qs(status ? { status } : undefined)}`, { token }),
   markEnquiry: (id: string, token: string) =>
-    request<Enquiry>(`/enquiries/${id}`, {
+    request<Enquiry>(`/api/enquiries/${id}`, {
       method: 'PATCH',
       body: { status: 'followed_up' },
       token,
@@ -125,44 +128,44 @@ export const api = {
 
   // ---- Newsletter ----
   subscribeNewsletter: (email: string) =>
-    request<{ subscribed: boolean }>(`/newsletter`, {
+    request<{ subscribed: boolean }>(`/api/newsletter`, {
       method: 'POST',
       body: { email },
     }),
   listNewsletter: (token: string) =>
-    request<NewsletterSubscriber[]>(`/newsletter`, { token }),
+    request<NewsletterSubscriber[]>(`/api/newsletter`, { token }),
   removeSubscriber: (id: string, token: string) =>
-    request<void>(`/newsletter/${id}`, { method: 'DELETE', token }),
+    request<void>(`/api/newsletter/${id}`, { method: 'DELETE', token }),
 
   // ---- Curations ----
-  listCurations: () => request<Paginated<Curation>>(`/curations`),
-  getCuration: (slug: string) => request<Curation>(`/curations/${slug}`),
-  adminCurations: (token: string) => request<Curation[]>(`/curations/admin`, { token }),
+  listCurations: () => request<Paginated<Curation>>(`/api/curations`),
+  getCuration: (slug: string) => request<Curation>(`/api/curations/${slug}`),
+  adminCurations: (token: string) => request<Curation[]>(`/api/curations/admin`, { token }),
   createCuration: (body: Partial<Curation>, token: string) =>
-    request<Curation>(`/curations`, { method: 'POST', body, token }),
+    request<Curation>(`/api/curations`, { method: 'POST', body, token }),
   updateCuration: (id: string, body: Partial<Curation>, token: string) =>
-    request<Curation>(`/curations/${id}`, { method: 'PATCH', body, token }),
+    request<Curation>(`/api/curations/${id}`, { method: 'PATCH', body, token }),
   deleteCuration: (id: string, token: string) =>
-    request<void>(`/curations/${id}`, { method: 'DELETE', token }),
+    request<void>(`/api/curations/${id}`, { method: 'DELETE', token }),
 
   // ---- Advisors ----
-  listAdvisors: () => request<Paginated<Advisor>>(`/advisors`),
-  adminAdvisors: (token: string) => request<Advisor[]>(`/advisors/admin`, { token }),
+  listAdvisors: () => request<Paginated<Advisor>>(`/api/advisors`),
+  adminAdvisors: (token: string) => request<Advisor[]>(`/api/advisors/admin`, { token }),
   createAdvisor: (body: Partial<Advisor>, token: string) =>
-    request<Advisor>(`/advisors`, { method: 'POST', body, token }),
+    request<Advisor>(`/api/advisors`, { method: 'POST', body, token }),
   updateAdvisor: (id: string, body: Partial<Advisor>, token: string) =>
-    request<Advisor>(`/advisors/${id}`, { method: 'PATCH', body, token }),
+    request<Advisor>(`/api/advisors/${id}`, { method: 'PATCH', body, token }),
   deleteAdvisor: (id: string, token: string) =>
-    request<void>(`/advisors/${id}`, { method: 'DELETE', token }),
+    request<void>(`/api/advisors/${id}`, { method: 'DELETE', token }),
 
   // ---- Auth ----
   login: (accessToken: string) =>
-    request<AuthSession>(`/auth/login`, { method: 'POST', body: { accessToken } }),
+    request<AuthSession>(`/api/auth/login`, { method: 'POST', body: { accessToken } }),
   me: (token: string) =>
-    request<{ uid: string; email: string; role: 'admin' }>(`/auth/me`, { token }),
+    request<{ uid: string; email: string; role: 'admin' }>(`/api/auth/me`, { token }),
 
   // ---- Uploads ----
-  uploadImage: (file: File, token: string) => upload(`/uploads`, file, token),
+  uploadImage: (file: File, token: string) => upload(`/api/uploads`, file, token),
 };
 
 /** Multipart upload (images only, ≤5MB) → returns the public URL string. */

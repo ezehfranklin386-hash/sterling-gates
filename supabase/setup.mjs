@@ -210,7 +210,7 @@ async function ensureBucket() {
 // --------------------------------------------------------------------------
 // 3. Admin + settings
 // --------------------------------------------------------------------------
-async function ensureAdmin({ email, password, phone, name }) {
+async function ensureAdmin({ email, password, phone, contactEmail, name }) {
   console.log(`\n3/5 admin + settings\n${'-'.repeat(32)}`);
 
   // a) Supabase Auth user (look up by email first so re-runs are idempotent).
@@ -250,7 +250,7 @@ async function ensureAdmin({ email, password, phone, name }) {
         id: 1,
         contact_phone: phone,
         contact_phone_label: 'WhatsApp / Call',
-        admin_email: email,
+        admin_email: contactEmail,
         emails_enabled: true,
         whatsapp_enabled: true,
       },
@@ -263,7 +263,7 @@ async function ensureAdmin({ email, password, phone, name }) {
       body: {
         contact_phone: phone,
         contact_phone_label: 'WhatsApp / Call',
-        admin_email: email,
+        admin_email: contactEmail,
       },
     });
     console.log(`  ✓ Backfilled settings contact → ${phone}.`);
@@ -353,9 +353,10 @@ async function main() {
 
   const email = get('email') ?? 'admin@sterlinggates.ng';
   const password = get('password') ?? 'Admin123!';
-  const phone = get('phone') ?? '2348012345678';
+  const phone = get('phone') ?? '2349032133702';
+  const contactEmail = get('contact-email') ?? 'sterlinggatesrealty@gmail.com';
   const name = get('name') ?? 'Ada Eze';
-  await ensureAdmin({ email, password, phone, name });
+  await ensureAdmin({ email, password, phone, contactEmail, name });
 
   await seedContent();
   await verify();
